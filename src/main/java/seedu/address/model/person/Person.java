@@ -62,7 +62,7 @@ public class Person {
     }
 
     /**
-     * Returns true if both persons have the same name, phone, and email.
+     * Returns true if both persons have either the same phone or email.
      * This is because phone and email should be unique to each person.
      * This defines a weaker notion of equality between two persons.
      */
@@ -72,9 +72,7 @@ public class Person {
         }
 
         return otherPerson != null
-                && otherPerson.getName().equals(getName())
-                && phone.equals(otherPerson.phone)
-                && email.equals(otherPerson.email);
+                && (phone.equals(otherPerson.phone) || email.equals(otherPerson.email));
     }
 
     /**
