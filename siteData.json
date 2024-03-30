@@ -53,6 +53,7 @@
         "help-command": "Help Command",
         "filter-command": "Filter command",
         "clear-command": "Clear command",
+        "archive-command": "Archive command",
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-data-archiving": "[Proposed] Data archiving",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
