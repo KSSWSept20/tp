@@ -112,7 +112,6 @@
       "headings": {
         "culinarycontacts-user-guide": "CulinaryContacts User Guide",
         "quickstart": "Quickstart",
-        "navigating-the-user-guide": "Navigating the User Guide",
         "interpreting-the-gui": "Interpreting the GUI",
         "main-window": "Main Window",
         "contact-card": "Contact Card",
@@ -121,13 +120,9 @@
         "utility": "Utility",
         "contacts": "Contacts",
         "archive": "Archive",
-        "exiting-the-program-exit-2": "Exiting the program: exit",
-        "saving-the-data-2": "Saving the data",
-        "editing-the-data-file-2": "Editing the data file",
         "reservations": "Reservations",
         "faq": "FAQ",
         "known-issues": "Known Issues",
-        "glossary": "Glossary",
         "command-summary": "Command Summary"
       },
       "headingKeywords": {}
