@@ -20,7 +20,7 @@ Class "<<interface>>\nPredicate<Person>" as Predicate {
 Class Model
 
 FilterCommand -up-|> Command
-FilterCommand -> "1" hasMatchingTagPredicate
+FilterCommand -> "1" HasMatchingTagPredicate
 FilterCommand .down.> Model
 hasMatchingTagPredicate .up.|> Predicate
 
