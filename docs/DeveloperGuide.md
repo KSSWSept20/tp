@@ -22,7 +22,7 @@
 
 ## **Setting up, getting started**
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Refer to the guide [Setting up and getting started](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App.
+The architecture diagram given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -53,7 +53,7 @@ The bulk of the app's work is done by the following four components:
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The sequence diagram below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
@@ -165,21 +165,21 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Help Command
 
-The implementation help command is more related to Ui part of the code compared to other commands as it opens another window to show the command summary of all commands. It is facilitated by the `handlehelp` method in the `MainWindow` class.
+The implementation of help command is more related to Ui part of the code compared to other commands as it opens another window to show the command summary. It is facilitated by the `handleHelp` method in the `MainWindow` class.
 
-The following activity diagram shows how a user view the help window with `help` command.
+The following activity diagram shows how a user views the help window with the `help` command.
 
 <puml src="diagrams/HelpActivityDiagram.puml" alt="HelpActivityDiagram" />
 
-Given below is an example usage scenario of the help window.
+Given below is an example usage scenario of the `help` command.
 
 Step 1. The user launches the application. The user will see the main window of the address book.
 
-Step 2. The user executes `help` command to open the help window. The `MainWindow#executeCommand()` will call `MainWindow#isShowHelp()` to check if the command to be executed is `help` command. `help` command is detected and causes `Model#handleHelp()` to be called which opens the help window.
+Step 2. The user executes the `help` command to open the help window. The `MainWindow#executeCommand()` will call `MainWindow#isShowHelp()` to check if the command to be executed is a `help` command. The `help` command is detected and causes `Model#handleHelp()` to be called which opens the help window.
 
 Step 3. The user looks through the command summary table to find the information needed.
 
-Step 4. The user can copy the website address by clicking `CopyURL` button on the help window and navigate to the program website for more detailed information.
+Step 4. The user can copy the website address by clicking `Copy URL` button in the help window and navigate to the website for more detailed information.
 
 <box type="info" seamless>
 
@@ -187,23 +187,25 @@ Step 4. The user can copy the website address by clicking `CopyURL` button on th
 
 </box>
 
-Step 5. The user can then click the `X` on top right corner or press`Q` on keyboard to close the help window and return to the main window.
+Step 5. The user can then click the `X` on top right corner or press`Q` on keyboard to close the help window.
 
 #### Design considerations:
 
 **Aspect: How help window is presented:**
 
-* **Alternative 1 (current choice):** The program website address and important informations on top of a command summary table.
+* **Option 1 (current choice):** The website address and things to note on top of a command summary table.
   * Pros: Useful and convenient summary for easy reference.
-  * Cons: May need to modify every time a new type of command is added.
+  * Cons: May need to modify every time a new command is added.
 
-* **Alternative 2:** Only the program website address.
+* **Option 2:** Only the website address.
   * Pros: Easy to implement and no change needed in the future.
   * Cons: Not very useful and convenient as a quick reference.
 
 ### Filter command
 
 The filtering of contacts by tag is facilitated by `HasMatchingTagPredicate`. It implements the `Predicate<Person>` interface and overrides the `test(Person)` method, which is used to decide which `Person`s will be displayed after the filter command. The `test(Person)` method will return true only if the person has a tag matching every filter tag.
+
+Here is the class diagram for `FilterCommand`.
 
 <puml src="diagrams/FilterCommandClass.puml" alt="FilterClassDiagram" />
 
@@ -230,6 +232,7 @@ The following activity diagram summarizes what happens when a user executes a cl
 
 The `archive` command essentially removes the person from the `UniquePersonList persons` and places the person into the `UniquePersonList archivedPersons` in the address book, hiding the person's contact from the main list.
 
+
 <puml src="diagrams/ArchiveCommandObjectDiagram0.puml" alt="ArchiveCommandObjectDiagram0" />
 
 In this example, Irfan Ibrahim was initially in the `persons` list.
@@ -243,104 +246,6 @@ The `archive` command has its corresponding `unarchive` command which conversely
 There is also the associated `alist` command that displays all the contacts that have been added into the `archivedPersons` list.
 
 Archiving in CulinaryContacts has also been implemented in a way that allows for all other commands to be performed on the archived list. This was achieved by modifying the `FilteredList<Person> filteredPersons` within the `ModelManager` class to dynamically contain either the archived persons or the normal persons. This is because many of the original commands already make use of the `filteredPersons` list to execute the commands on. For commands that do not use the `filteredPersons` list in their execution, the flag `isViewingArchivedList` within the `ModelManager` is used instead in order to check if the user is currently viewing the normal persons or the archived persons before performing the command on the corresponding list.
-
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
-
-<box type="info" seamless>
-
-**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</box>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</box>
-
-The following sequence diagram shows how an undo operation goes through the `Logic` component:
-
-<puml src="diagrams/UndoSequenceDiagram-Logic.puml" alt="UndoSequenceDiagram-Logic" />
-
-<box type="info" seamless>
-
-**Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</box>
-
-Similarly, how an undo operation goes through the `Model` component is shown below:
-
-<puml src="diagrams/UndoSequenceDiagram-Model.puml" alt="UndoSequenceDiagram-Model" />
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</box>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<puml src="diagrams/CommitActivityDiagram.puml" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -383,6 +288,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user                | view all the contacts that I currently have in my address book                                |                                                                    |
 | `* * *`  | new user                | delete existing contacts                                                                      | remove any unwanted or experimental contacts                       |
 | `* * *`  | new user                | find specific contact(s) by name                                                              |                                                                    |
+| `* * *`  | new user                | add new reservations                                                                          |                                                                    |
+| `* * *`  | new user                | delete existing reservations                                                                  |                                                                    |
+| `* * *`  | new user                | archive contacts of employees/suppliers whose contracts have expired                          | declutter my contact list                                          |
+| `* * *`  | new user                | unarchive contacts                                                                            | contact them when the need arises                                  |
 | `* * *`  | intermediate user       | edit existing contacts                                                                        | update contacts easily without deleting and recreating a new one   |
 | `* * *`  | intermediate user       | filter my contacts by specific tag(s)                                                         |                                                                    |
 | `* * *`  | clumsy user             | get a confirmation message when clearing the entire address book                              | avoid accidentally deleting all contacts                           |
@@ -399,7 +308,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | intermediate user       | delete multiple contacts in 1 command                                                         | remove multiple contacts more quickly                              |
 | `* *`    | intermediate user       | see upcoming reservations/events in a dashboard                                               | anticipate and prepare for such events                             |
 | `* *`    | intermediate user       | add special requests (e.g. dietary restrictions) to reservations                              | provide personalized service to my customers                       |
-| `* *`    | expert user             | archive contacts of employees/suppliers whose contracts have expired                          | declutter my contact list                                          |
 | `* *`    | expert user             | create my own aliases and shortcuts                                                           | reduce time spent typing commands                                  |
 | `*`      | clumsy user             | find contacts that match the keyword partially                                                | avoid retyping the command when I make a typo                      |
 | `*`      | intermediate user       | import contacts from other sources                                                            | quickly populate the app with existing information                 |
@@ -473,19 +381,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2a1. CulinaryContacts shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 * 2b. The new field value(s) is/are invalid.
 
     * 2b1. CulinaryContacts shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 * 2c. No fields to edit are provided.
 
     * 2c1. CulinaryContacts shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 **Use case: UC05 - Find a person**
 
@@ -541,7 +449,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2a1. CulinaryContacts shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 **Use case: UC08 - Clear all entries**
 
@@ -587,6 +495,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **API (Application Programming Interface)**: An API is a set of rules and tools that enables different software applications to communicate and interact with each other.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -616,8 +525,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -632,16 +539,6 @@ testers are expected to do more *exploratory* testing.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
 
 --------------------------------------------------------------------------------------------------------------------
 
