@@ -230,9 +230,18 @@ The following activity diagram summarizes what happens when a user executes a cl
 
 ### Archive command
 
-The archive command essentially removes the person from the `UniquePersonList persons` and places the person into the `UniquePersonList archivedPersons` in the address book, hiding the person's contact from the main list.
+The `archive` command essentially removes the person from the `UniquePersonList persons` and places the person into the `UniquePersonList archivedPersons` in the address book, hiding the person's contact from the main list.
 
-This command has its corresponding `unarchive` command which conversely removes the person from the `archivedPersons` list and adds them into the `persons` list inside the address book.
+
+<puml src="diagrams/ArchiveCommandObjectDiagram0.puml" alt="ArchiveCommandObjectDiagram0" />
+
+In this example, Irfan Ibrahim was initially in the `persons` list.
+
+<puml src="diagrams/ArchiveCommandObjectDiagram1.puml" alt="ArchiveCommandObjectDiagram1" />
+
+After being archived, Irfan was removed from the `persons` list and added to the `archivedPersons` list.
+
+The `archive` command has its corresponding `unarchive` command which conversely removes the person from the `archivedPersons` list and adds them into the `persons` list inside the address book.
 
 There is also the associated `alist` command that displays all the contacts that have been added into the `archivedPersons` list.
 
