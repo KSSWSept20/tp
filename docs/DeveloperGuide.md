@@ -369,19 +369,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2a1. CulinaryContacts shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 * 2b. The new field value(s) is/are invalid.
 
     * 2b1. CulinaryContacts shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 * 2c. No fields to edit are provided.
 
     * 2c1. CulinaryContacts shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 **Use case: UC05 - Find a person**
 
@@ -437,7 +437,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2a1. CulinaryContacts shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
 
 **Use case: UC08 - Clear all entries**
 
