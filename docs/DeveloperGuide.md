@@ -279,6 +279,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user                | view all the contacts that I currently have in my address book                                |                                                                    |
 | `* * *`  | new user                | delete existing contacts                                                                      | remove any unwanted or experimental contacts                       |
 | `* * *`  | new user                | find specific contact(s) by name                                                              |                                                                    |
+| `* * *`  | new user                | add new reservations                                                                          |                                                                    |
+| `* * *`  | new user                | delete existing reservations                                                                  |                                                                    |
+| `* * *`  | new user                | archive contacts of employees/suppliers whose contracts have expired                          | declutter my contact list                                          |
+| `* * *`  | new user                | unarchive contacts                                                                            | contact them when the need arises                                  |
 | `* * *`  | intermediate user       | edit existing contacts                                                                        | update contacts easily without deleting and recreating a new one   |
 | `* * *`  | intermediate user       | filter my contacts by specific tag(s)                                                         |                                                                    |
 | `* * *`  | clumsy user             | get a confirmation message when clearing the entire address book                              | avoid accidentally deleting all contacts                           |
@@ -295,7 +299,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | intermediate user       | delete multiple contacts in 1 command                                                         | remove multiple contacts more quickly                              |
 | `* *`    | intermediate user       | see upcoming reservations/events in a dashboard                                               | anticipate and prepare for such events                             |
 | `* *`    | intermediate user       | add special requests (e.g. dietary restrictions) to reservations                              | provide personalized service to my customers                       |
-| `* *`    | expert user             | archive contacts of employees/suppliers whose contracts have expired                          | declutter my contact list                                          |
 | `* *`    | expert user             | create my own aliases and shortcuts                                                           | reduce time spent typing commands                                  |
 | `*`      | clumsy user             | find contacts that match the keyword partially                                                | avoid retyping the command when I make a typo                      |
 | `*`      | intermediate user       | import contacts from other sources                                                            | quickly populate the app with existing information                 |
