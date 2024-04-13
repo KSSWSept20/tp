@@ -220,11 +220,11 @@ The following sequence diagram shows how a filter command goes through the `Logi
 
 ### Clear command
 
-To safeguard against accidentally clearing the contact list, the clear command requires the user to input a confirmation after the initial clear command. This is performed with the use of the two flags in the `ModelManager` class, namely `isAwaitingClear` and `isConfirmClear`, where their statuses are checked within the execution of the clear command since the model is passed to the command.
+To safeguard against accidentally clearing the contact list, the `clear` command requires the user to input a confirmation after the initial `clear` command. This is performed with the use of the two flags in the `ModelManager` class, namely `isAwaitingClear` and `isConfirmClear`, where their statuses are checked within the execution of the `clear` command since the model is passed to the command.
 
-Another flag, `previouslyClear`, is used in the `LogicManager` class to check if the previous command was a clear command before handling the current command entered, where it checks if a confirmation "y" is entered.
+Another flag, `previouslyClear`, is used in the `LogicManager` class to check if the previous command was a `clear` command before handling the current command entered, where it checks if a confirmation "y" is entered.
 
-The following activity diagram summarizes what happens when a user executes a clear command:
+The following activity diagram summarizes what happens when a user executes a `clear` command:
 
 <puml src="diagrams/ClearCommandActivityDiagram.puml" alt="ClearCommandActivityDiagram" />
 
