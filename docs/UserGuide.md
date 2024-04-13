@@ -51,7 +51,7 @@ CulinaryContacts is a **desktop app for managing contacts and reservations in yo
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar culinarycontacts.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   
+
    ![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -92,8 +92,7 @@ CulinaryContacts is a **desktop app for managing contacts and reservations in yo
 | **Contact Index Number** | The `INDEX` used in `edit`, `delete` and `rsv` commands.     |
 | **Tags**                 | Tags are used for finding persons with the `filter` command. |
 
-* The fields `NAME`, `PHONE_NUMBER`, `ADDRESS` and `EMAIL` on the contact card will be truncated if 
-  they are too long, to maintain neatness. The character limit before truncation is sufficient for most inputs so normal usage is not hindered.
+* The fields `NAME`, `PHONE_NUMBER`, `ADDRESS` and `EMAIL` on the contact card will be truncated if they are too long, to maintain neatness. The character limit before truncation is sufficient for most inputs so normal usage is not hindered.
 * The 'supplier' tag is green.
 * The 'employee' tag is blue.
 * The 'customer' tag is yellow.
@@ -107,8 +106,7 @@ CulinaryContacts is a **desktop app for managing contacts and reservations in yo
 | **Reservation Index Number**  | The `INDEX` used in the `rsvdel` command.                                                                                          |
 | **Expiry Flag**               | The expiry flag indicates if the date and time of the reservation is after the date and time when the application is launched, or after the date and time when `rsvsort` is invoked.
 
-* The person's `NAME`, `PHONE_NUMBER` and reservation's `PAX` on the reservation card will be truncated if they are too long, with 
-  the same reason as above.
+* The person's `NAME`, `PHONE_NUMBER` and reservation's `PAX` on the reservation card will be truncated if they are too long, with the same reason as above.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -144,7 +142,7 @@ CulinaryContacts is a **desktop app for managing contacts and reservations in yo
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
-### Utility 
+### Utility
 
 #### Viewing help: `help`
 
@@ -176,7 +174,7 @@ CulinaryContacts data are saved in the hard disk automatically after any command
 CulinaryContacts data are saved automatically as a JSON file `[JAR file location]/data/culinarycontacts.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
-   
+
 **Caution:**
 If your changes to the data file makes its format invalid, CulinaryContacts will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the CulinaryContacts to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
@@ -204,7 +202,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 * `NAME` cannot be blank.
 * `PHONE_NUMBER` should only contain numbers, and it should be at least 3 digits long.
 * `EMAIL` should be of the format local-part@domain and adhere to the following constraints:
-  1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. 
+  1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters.
   2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.
   The domain name must:
      - end with a domain label at least 2 characters long
@@ -369,7 +367,7 @@ Format: `rsvsort`
 * Upcoming reservations are always on top of expired reservations.
 * Upcoming reservations are sorted from earliest to latest.
 * Expired reservations are also sorted from earliest to latest.
-* If you add an upcoming reservation and it becomes expired while the application is open, the expiry flag will not automatically appear on the reservation card. 
+* If you add an upcoming reservation and it becomes expired while the application is open, the expiry flag will not automatically appear on the reservation card.
   * Calling `rsvsort` will update the reservation card to show the expiry flag.
 
 --------------------------------------------------------------------------------------------------------------------
