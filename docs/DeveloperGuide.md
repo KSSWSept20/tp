@@ -614,7 +614,7 @@ testers are expected to do more *exploratory* testing.
    Expected: First contact is removed from the archived list. This unarchived contact can be seen by executing the `list` command to view the contacts list. Details of the unarchived contact are shown in the status message.
    
    c. Test case: `unarchive 0`<br>
-   Expected: No person is unarchived. Error details shown in the status message.
+   Expected: No person is unarchived. Result display shows error message: `Invalid command format!`.
    
    d. Other incorrect delete commands to try: `unarchive`, `unarchive x`, `...` (where x is larger than list size)<br>
    Expected: Similar to previous.
