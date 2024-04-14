@@ -10,7 +10,7 @@ Class FilterCommand {
   +MESSAGE_USAGE: String
   +execute(Model): CommandResult
 }
-Class hasMatchingTagPredicate {
+Class HasMatchingTagPredicate {
   -filterTags: List<String>
   +test(Person): Boolean
 }
@@ -22,6 +22,6 @@ Class Model
 FilterCommand -up-|> Command
 FilterCommand -> "1" HasMatchingTagPredicate
 FilterCommand .down.> Model
-hasMatchingTagPredicate .up.|> Predicate
+HasMatchingTagPredicate .up.|> Predicate
 
 @enduml
