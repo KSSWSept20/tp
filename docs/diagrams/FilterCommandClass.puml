@@ -3,7 +3,7 @@ hide circle
 skinparam classAttributeIconSize 0
 
 Class "{abstract}\nCommand" as Command {
-  +execute(Model): CommandResult
+  {abstract}+execute(Model): CommandResult
 }
 Class FilterCommand {
   +COMMAND_WORD: String
