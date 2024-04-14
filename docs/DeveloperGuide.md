@@ -636,11 +636,11 @@ testers are expected to do more *exploratory* testing.
    a. Download the jar file and copy into an empty folder.
 
    b. Double-click the jar file.<br>
-   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimal.
 
 1. Saving window preferences
 
-   a. Resize the window to an optimum size. Move the window to a different location. Close the window.
+   a. Resize the window to an optimal size. Move the window to a different location. Close the window.
 
    b. Re-launch the app by double-clicking the jar file.<br>
    Expected: The most recent window size and location is retained.
@@ -712,7 +712,7 @@ testers are expected to do more *exploratory* testing.
    Expected: The archived person is removed from the contacts list. This archived contact can be seen by executing the `alist` command to view the archived list. Details of the archived contact are shown in the status message.
 
    c. Test case: `archive 0`<br>
-   Expected: No person is archived. Error details shown in the status message.
+   Expected: No person is archived. Result display shows error message: `Invalid command format!`.
    
    d. Other incorrect delete commands to try: `archive`, `archive x`, `...` (where x is larger than list size)<br>
    Expected: Similar to previous.
@@ -722,7 +722,7 @@ testers are expected to do more *exploratory* testing.
    a. Prerequisites: The user is viewing the archived list. There is at least 1 person in the archived list.
    
    b. Test case: `archive 1`<br>
-   Expected: Result display shows error message: “This command can only be used while viewing the active contacts list.” No person is archived.
+   Expected: Result display shows error message: `This command can only be used while viewing the active contacts list`. No person is archived.
 
 ### Unarchiving a person
 1. Unarchiving a person while viewing the archived list
@@ -733,7 +733,7 @@ testers are expected to do more *exploratory* testing.
    Expected: First contact is removed from the archived list. This unarchived contact can be seen by executing the `list` command to view the contacts list. Details of the unarchived contact are shown in the status message.
    
    c. Test case: `unarchive 0`<br>
-   Expected: No person is unarchived. Error details shown in the status message.
+   Expected: No person is unarchived. Result display shows error message: `Invalid command format!`.
    
    d. Other incorrect delete commands to try: `unarchive`, `unarchive x`, `...` (where x is larger than list size)<br>
    Expected: Similar to previous.
@@ -743,7 +743,7 @@ testers are expected to do more *exploratory* testing.
    a. Prerequisites: The user is viewing the contacts list. There is at least 1 person in the contacts list.
 
    b. Test case: `unarchive 1`<br>
-   Expected: Result display shows error message: “This command can only be used while viewing the archived list.” No person is unarchived.
+   Expected: Result display shows error message: `This command can only be used while viewing the archived list`. No person is unarchived.
 
 ### Adding a new reservation
 1. Adding a new reservation for the first person in the _displayed person list_.
@@ -758,7 +758,7 @@ testers are expected to do more *exploratory* testing.
    a. Prerequisites: There is at least 1 person in the _displayed person list_. There is an existing reservation made by the first person on 17/04/2024 at 6.00pm.
    
    b. Test case: `rsv 1 d/2024-04-17 t/1800` p/5<br>
-   Expected: Result display shows error message: “This person has already made a reservation at this date and timing in the address book”. No new reservation is added to the reservation list.
+   Expected: Result display shows error message: `This person has already made a reservation at this date and timing in the address book`. No new reservation is added to the reservation list.
 
 ### Deleting a new reservation 
 1. Deleting the first reservation in the reservation list
@@ -769,7 +769,7 @@ testers are expected to do more *exploratory* testing.
    Expected: First reservation is deleted from the reservation list. Details of the reservation shown in the result display.
 
    c. Test case: `rsvdel 1000`<br>
-   Expected: Result display shows error message: “The reservation index provided is invalid”. No reservation is deleted from the reservation list.
+   Expected: Result display shows error message: `The reservation index provided is invalid`. No reservation is deleted from the reservation list.
 
 ### Sorting reservations
 1. Sorting all reservations

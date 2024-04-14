@@ -325,7 +325,7 @@ Format: `alist`
 <box type="info" seamless>
 
 **Notes about reservations:**<br>
-* Currently, editing a person in the contacts list does not update the details of the same person in the reservation list.
+* Currently, editing a person in the contacts list does not update the details of the same person in the reservations list.
 * If the user intends to edit the reservation details of a person, they will have to:
     1. Edit the person's details in the contacts list.
     2. Delete all reservations made by the person.
