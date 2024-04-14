@@ -593,7 +593,7 @@ testers are expected to do more *exploratory* testing.
    Expected: The archived person is removed from the contacts list. This archived contact can be seen by executing the `alist` command to view the archived list. Details of the archived contact are shown in the status message.
 
    c. Test case: `archive 0`<br>
-   Expected: No person is archived. Error details shown in the status message.
+   Expected: No person is archived. Result display shows error message: `Invalid command format!`.
    
    d. Other incorrect delete commands to try: `archive`, `archive x`, `...` (where x is larger than list size)<br>
    Expected: Similar to previous.
