@@ -650,7 +650,7 @@ testers are expected to do more *exploratory* testing.
    Expected: First reservation is deleted from the reservation list. Details of the reservation shown in the result display.
 
    c. Test case: `rsvdel 1000`<br>
-   Expected: Result display shows error message: “The reservation index provided is invalid”. No reservation is deleted from the reservation list.
+   Expected: Result display shows error message: `The reservation index provided is invalid`. No reservation is deleted from the reservation list.
 
 ### Sorting reservations
 1. Sorting all reservations
