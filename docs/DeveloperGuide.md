@@ -220,7 +220,7 @@ The following sequence diagram shows how a filter command goes through the `Logi
 
 ### Clear command
 
-To safeguard against accidentally clearing the contact list, the `clear` command requires the user to input a confirmation after the initial `clear` command. This is performed with the use of the two flags in the `ModelManager` class, namely `isAwaitingClear` and `isConfirmClear`, where their statuses are checked within the execution of the `clear` command since the model is passed to the command.
+To safeguard against accidentally clearing the contacts list, the `clear` command requires the user to input a confirmation after the initial `clear` command. This is performed with the use of the two flags in the `ModelManager` class, namely `isAwaitingClear` and `isConfirmClear`, where their statuses are checked within the execution of the `clear` command since the model is passed to the command.
 
 Another flag, `previouslyClear`, is used in the `LogicManager` class to check if the previous command was a `clear` command before handling the current command entered, where it checks if a confirmation "y" is entered.
 
@@ -284,13 +284,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user                | view the user guide easily                                                                    | learn more about the app as and when I need                        |
 | `* * *`  | new user                | use a command to exit the program                                                             | close the application without moving my mouse                      |
 | `* * *`  | new user                | add new contacts                                                                              | save their contact details                                         |
-| `* * *`  | new user                | tag new contacts as 'supplier', 'customer' or 'employees'                                     | keep my contact list organized                                     |
+| `* * *`  | new user                | tag new contacts as 'supplier', 'customer' or 'employees'                                     | keep my contacts list organized                                     |
 | `* * *`  | new user                | view all the contacts that I currently have in my address book                                |                                                                    |
 | `* * *`  | new user                | delete existing contacts                                                                      | remove any unwanted or experimental contacts                       |
 | `* * *`  | new user                | find specific contact(s) by name                                                              |                                                                    |
 | `* * *`  | new user                | add new reservations                                                                          |                                                                    |
 | `* * *`  | new user                | delete existing reservations                                                                  |                                                                    |
-| `* * *`  | new user                | archive contacts of employees/suppliers whose contracts have expired                          | declutter my contact list                                          |
+| `* * *`  | new user                | archive contacts of employees/suppliers whose contracts have expired                          | declutter my contacts list                                          |
 | `* * *`  | new user                | unarchive contacts                                                                            | contact them when the need arises                                  |
 | `* * *`  | intermediate user       | edit existing contacts                                                                        | update contacts easily without deleting and recreating a new one   |
 | `* * *`  | intermediate user       | filter my contacts by specific tag(s)                                                         |                                                                    |
@@ -752,33 +752,33 @@ testers are expected to do more *exploratory* testing.
    a. Prerequisites: There is at least 1 person in the _displayed person list_. There are no existing reservations made by the first person on 17/04/2024 at 6.00pm.
    
    b. Test case: `rsv 1 d/2024-04-17 t/1800 p/8`<br>
-   Expected: A new reservation is added to the reservation list. Name and phone number of the person, as well as date, time and number of people will be displayed in the reservation card.
+   Expected: A new reservation is added to the reservations list. Name and phone number of the person, as well as date, time and number of people will be displayed in the reservation card.
 
 2. Adding a duplicate reservation with the same date and time
 
    a. Prerequisites: There is at least 1 person in the _displayed person list_. There is an existing reservation made by the first person on 17/04/2024 at 6.00pm.
    
    b. Test case: `rsv 1 d/2024-04-17 t/1800` p/5<br>
-   Expected: Result display shows error message: `This person has already made a reservation at this date and timing in the address book`. No new reservation is added to the reservation list.
+   Expected: Result display shows error message: `This person has already made a reservation at this date and timing in the address book`. No new reservation is added to the reservations list.
 
 ### Deleting a new reservation 
-1. Deleting the first reservation in the reservation list
+1. Deleting the first reservation in the reservations list
    
-   a. Prerequisites: There is at least 1 reservation in the reservation list.
+   a. Prerequisites: There is at least 1 reservation in the reservations list.
    
    b. Test case: `rsvdel 1`<br>
-   Expected: First reservation is deleted from the reservation list. Details of the reservation shown in the result display.
+   Expected: First reservation is deleted from the reservations list. Details of the reservation shown in the result display.
 
    c. Test case: `rsvdel 1000`<br>
-   Expected: Result display shows error message: `The reservation index provided is invalid`. No reservation is deleted from the reservation list.
+   Expected: Result display shows error message: `The reservation index provided is invalid`. No reservation is deleted from the reservations list.
 
 ### Sorting reservations
 1. Sorting all reservations
 
-   a. Prerequisites: Multiple reservations in the reservation list. There is at least 1 non-expired reservation and 1 expired reservation in the reservation list. There is at least 1 person in the _displayed person list_.
+   a. Prerequisites: Multiple reservations in the reservations list. There is at least 1 non-expired reservation and 1 expired reservation in the reservations list. There is at least 1 person in the _displayed person list_.
    
    b. Test case: `rsv 1 d/2024-09-25 t/1800 p/4`, followed by `rsvsort`<br>
-   Expected: The new reservation is added to the bottom of the reservation list. After the `rsvsort` command is called, the reservation list is now sorted in the [correct order](UserGuide.html#sorting-reservations-rsvsort).
+   Expected: The new reservation is added to the bottom of the reservations list. After the `rsvsort` command is called, the reservations list is now sorted in the [correct order](UserGuide.html#sorting-reservations-rsvsort).
 
 
 
@@ -789,7 +789,7 @@ testers are expected to do more *exploratory* testing.
 Team size: 4
 
 1. **Use an ID field as the unique identifier**: The current unique identifier is the `NAME` of the person preventing addition of duplicate names. This is too restrictive as persons with the same name are quite common in reality. The user may also want to only record the first or last name which may cause more duplicate names. We plan to introduce a new `ID` field as a unique identifier for each contact, which will allow duplicate names to be recorded.
-2. **Sync contact updates with reservation**: Currently, when a user edits a contact's `NAME` or `PHONE NUMBER` in the contacts list, these changes are not reflected in existing reservations made for that contact. As a result, the reservation records become inconsistent with the updated contact details. We plan to enhance this feature by ensuring that any updates to a contact in the contacts or archived list will automatically update the contact's details in the reservation list. For example, if the contact John Doe's phone number is updated, all existing reservations under John Doe's name will automatically reflect this new phone number.
+2. **Sync contact updates with reservation**: Currently, when a user edits a contact's `NAME` or `PHONE NUMBER` in the contacts list, these changes are not reflected in existing reservations made for that contact. As a result, the reservation records become inconsistent with the updated contact details. We plan to enhance this feature by ensuring that any updates to a contact in the contacts or archived list will automatically update the contact's details in the reservations list. For example, if the contact John Doe's phone number is updated, all existing reservations under John Doe's name will automatically reflect this new phone number.
 3. **Cascading reservation deletion**: Currently, when a contact is deleted, their existing reservations remain in the address book. However, this process can be cumbersome for users, as they must manually delete each reservation individually. To enhance user-friendliness, we plan to implement cascading deletion, whereby deleting a contact will also remove all associated reservations automatically.
 4. **Less compulsory fields for add command**: Currently when adding a contact, the user must input the `NAME`, `PHONE`, `EMAIL`and `ADDRESS` of the contact as all these fields are mandatory. This requirement can create difficulties if the user lacks information for all these fields. We plan to make the `PHONE`, `EMAIL`and `ADDRESS` fields optional, so that it is more convenient for the user to add new contacts.
 5. **Make ‘invalid index’ error messages cover cases where `INDEX` is less than 1 or greater than 2147483647**: The current error message which shows when the `INDEX` is less than 1 and exceeds the maximum integer size is ‘Invalid command format’, which might not be clear for the user. We plan to show the error message `The person index provided is invalid` for these cases.
