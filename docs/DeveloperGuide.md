@@ -128,6 +128,7 @@ The `Model` component,
 
 * stores the address book data i.e., all `Person` and `Reservation` objects (which are contained in the
   `UniquePersonList` and `UniqueReservationList` objects respectively.
+  * Note that we have two UniquePersonLists: one called persons representing the contacts list and another called archivedPersons for the archived list.
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores the currently 'selected' `Reservation` objects in the same fashion as 'selected' `Person` objects.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
