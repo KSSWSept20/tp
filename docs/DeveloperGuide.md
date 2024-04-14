@@ -517,7 +517,7 @@ testers are expected to do more *exploratory* testing.
    a. Download the jar file and copy into an empty folder.
 
    b. Double-click the jar file.<br>
-   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimal.
 
 1. Saving window preferences
 
