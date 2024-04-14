@@ -624,7 +624,7 @@ testers are expected to do more *exploratory* testing.
    a. Prerequisites: The user is viewing the contacts list. There is at least 1 person in the contacts list.
 
    b. Test case: `unarchive 1`<br>
-   Expected: Result display shows error message: “This command can only be used while viewing the archived list.” No person is unarchived.
+   Expected: Result display shows error message: `This command can only be used while viewing the archived list`. No person is unarchived.
 
 ### Adding a new reservation
 1. Adding a new reservation for the first person in the displayed person list
