@@ -107,6 +107,7 @@ CulinaryContacts is a **desktop app for managing contacts and reservations in yo
 | **Expiry Flag**               | The expiry flag indicates if the date and time of the reservation is after the date and time when the application is launched, or after the date and time when `rsvsort` is invoked.
 
 * The person's `NAME`, `PHONE_NUMBER` and reservation's `PAX` on the reservation card will be truncated if they are too long, with the same reason as above.
+* The `DATE` on the reservation card is in dd/MM/yyyy format.
 
 --------------------------------------------------------------------------------------------------------------------
 
