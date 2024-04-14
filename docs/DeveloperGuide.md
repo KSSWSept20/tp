@@ -639,7 +639,7 @@ testers are expected to do more *exploratory* testing.
    a. Prerequisites: There is at least 1 person in the displayed person list. There is an existing reservation made by the first person on 17/04/2024 at 6.00pm.
    
    b. Test case: `rsv 1 d/2024-04-17 t/1800` p/5<br>
-   Expected: Result display shows error message: “This person has already made a reservation at this date and timing in the address book”. No new reservation is added to the reservation list.
+   Expected: Result display shows error message: `This person has already made a reservation at this date and timing in the address book`. No new reservation is added to the reservation list.
 
 ### Deleting a new reservation 
 1. Deleting the first reservation in the reservation list
