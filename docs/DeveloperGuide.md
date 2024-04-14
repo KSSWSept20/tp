@@ -267,9 +267,9 @@ Archiving in CulinaryContacts has also been implemented in a way that allows for
 
 * small family restaurant owners
 * has a need to manage a significant number of contacts such as suppliers, employees and customers
+* restaurant accepts reservations
 * prefer desktop apps over other types
 * can type fast
-* prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
 **Value proposition**:
@@ -615,6 +615,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **API (Application Programming Interface)**: An API is a set of rules and tools that enables different software applications to communicate and interact with each other.
+* **displayed person list**: This refers to the contacts or archived list of persons that you are currently viewing.
 
 --------------------------------------------------------------------------------------------------------------------
 
