@@ -514,31 +514,153 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+   a. Download the jar file and copy into an empty folder.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   b. Double-click the jar file.<br>
+   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimal.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+   a. Resize the window to an optimal size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   b. Re-launch the app by double-clicking the jar file.<br>
+   Expected: The most recent window size and location is retained.
 
-### Deleting a person
+### Listing all persons in contacts list
+1. Viewing the contacts list
 
-1. Deleting a person while all persons are being shown
+   a. Prerequisites: None 
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   b. Test case: `list`<br>
+   Expected: The contacts list is shown. The ‘contacts’ tab is underlined indicating that it is the current active tab.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+### Listing all persons in archived list
+1. Viewing the archived list
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   a. Prerequisites: None
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   b. Test case: `alist`<br>
+   Expected: The archived list is shown. The ‘archived’ tab is underlined indicating that it is the current active tab.
+
+### Clearing all entries
+1. Removing all persons and reservations from CulinaryContacts.
+
+   a. Prerequisites: None
+
+   b. Test case: `clear`, followed by `n` or any other input.<br>
+      Expected: All persons and reservations remain unchanged. A `Clear cancelled!` message will be shown in the result display.
+
+   c. Test case: `clear`, followed by `y`.<br>
+   Expected: All persons and reservations will be deleted. A `Clear successful!` message will be shown in the result display.
+
+### Viewing help
+1. Opening the help window to view the command summary
+
+   a. Prerequisites: The help window is not open.
+
+   b. Test case: `help`<br>
+   Expected: The help window is opened.
+   
+   c. Test case: Press `F1`<br>
+   Expected: The help window is opened.
+
+   d. Test case: Click `Help` button at the top, then click `Help F1` button in the drop-down menu.<br>
+   Expected: The help window is opened.
+
+2. Copying the user guide website address
+
+   a. Prerequisites: The help window is opened.
+
+   b. Test case: Click on the `Copy URL` button, then paste it in the address bar of an external web browser.<br>
+   Expected: The website address is copied to clipboard and the website is accessible.
+
+3. Closing the help window
+
+   a. Prerequisites: The help window is opened.
+
+   b. Test case: Press `q`<br>
+   Expected: The help window is closed.
+
+   c. Test case: Click the `X` button on top right corner of the help window.<br>
+   Expected: The help window is closed.
+
+### Archiving a person
+1. Archiving a person while viewing the contacts list
+
+   a. Prerequisites: The user is viewing the contacts list. There is at least 1 person in the contacts list.
+
+   b. Test case: `archive 1`, followed by `alist`<br>
+   Expected: The archived person is removed from the contacts list. This archived contact can be seen by executing the `alist` command to view the archived list. Details of the archived contact are shown in the status message.
+
+   c. Test case: `archive 0`<br>
+   Expected: No person is archived. Result display shows error message: `Invalid command format!`.
+   
+   d. Other incorrect delete commands to try: `archive`, `archive x`, `...` (where x is larger than list size)<br>
+   Expected: Similar to previous.
+
+2. Archiving a person while viewing the archived list
+   
+   a. Prerequisites: The user is viewing the archived list. There is at least 1 person in the archived list.
+   
+   b. Test case: `archive 1`<br>
+   Expected: Result display shows error message: `This command can only be used while viewing the active contacts list`. No person is archived.
+
+### Unarchiving a person
+1. Unarchiving a person while viewing the archived list
+
+   a. Prerequisites: List all archived persons using the `alist` command. There is at least 1 person in the archived list.
+
+   b. Test case: `unarchive 1`, followed by `list`<br>
+   Expected: First contact is removed from the archived list. This unarchived contact can be seen by executing the `list` command to view the contacts list. Details of the unarchived contact are shown in the status message.
+   
+   c. Test case: `unarchive 0`<br>
+   Expected: No person is unarchived. Result display shows error message: `Invalid command format!`.
+   
+   d. Other incorrect delete commands to try: `unarchive`, `unarchive x`, `...` (where x is larger than list size)<br>
+   Expected: Similar to previous.
+
+2. Unarchiving a person while viewing the contacts list
+   
+   a. Prerequisites: The user is viewing the contacts list. There is at least 1 person in the contacts list.
+
+   b. Test case: `unarchive 1`<br>
+   Expected: Result display shows error message: `This command can only be used while viewing the archived list`. No person is unarchived.
+
+### Adding a new reservation
+1. Adding a new reservation for the first person in the displayed person list
+   
+   a. Prerequisites: There is at least 1 person in the displayed person list. There are no existing reservations made by the first person on 17/04/2024 at 6.00pm.
+   
+   b. Test case: `rsv 1 d/2024-04-17 t/1800 p/8`<br>
+   Expected: A new reservation is added to the reservation list. Name and phone number of the person, as well as date, time and number of people will be displayed in the reservation card.
+
+2. Adding a duplicate reservation with the same date and time
+
+   a. Prerequisites: There is at least 1 person in the displayed person list. There is an existing reservation made by the first person on 17/04/2024 at 6.00pm.
+   
+   b. Test case: `rsv 1 d/2024-04-17 t/1800` p/5<br>
+   Expected: Result display shows error message: `This person has already made a reservation at this date and timing in the address book`. No new reservation is added to the reservation list.
+
+### Deleting a new reservation 
+1. Deleting the first reservation in the reservation list
+   
+   a. Prerequisites: There is at least 1 reservation in the reservation list.
+   
+   b. Test case: `rsvdel 1`<br>
+   Expected: First reservation is deleted from the reservation list. Details of the reservation shown in the result display.
+
+   c. Test case: `rsvdel 1000`<br>
+   Expected: Result display shows error message: `The reservation index provided is invalid`. No reservation is deleted from the reservation list.
+
+### Sorting reservations
+1. Sorting all reservations
+
+   a. Prerequisites: Multiple reservations in the reservation list. There is at least 1 non-expired reservation and 1 expired reservation in the reservation list. There is at least 1 person in the displayed person list.
+   
+   b. Test case: `rsv 1 d/2024-09-25 t/1800 p/4`, followed by `rsvsort`<br>
+   Expected: The new reservation is added to the bottom of the reservation list. After the `rsvsort` command is called, the reservation list is now sorted in the [correct order](UserGuide.html#sorting-reservations-rsvsort).
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
