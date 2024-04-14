@@ -334,7 +334,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to add a new person.
-1. CulinaryContacts adds the new person to the list.
+1. CulinaryContacts adds the new person to the _displayed person list_.
 
    Use case ends.
 
@@ -352,12 +352,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from step 1.
 
-**Use case: UC03 - List all persons**
+**Use case: UC03 - List all persons in contacts list**
 
 **MSS**
 
-1. User requests to show all contacts in the list.
-1. CulinaryContacts shows all persons in the list.
+1. User requests to show all persons in the contacts list.
+1. CulinaryContacts shows all persons in the contacts list.
 
    Use case ends.
 
@@ -365,8 +365,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to <u>list all persons (UC03)</u>.
-1. User requests to edit the fields of a specific person in the list.
+1. User requests to <u>list all persons in the contacts list (UC03)</u> or <u>list all persons in the archived list (UC09)</u>.
+1. User requests to edit the fields of a specific person in the _displayed person list_.
 1. CulinaryContacts edits the fields of the person.
 
    Use case ends.
@@ -399,8 +399,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to find all persons with names matching the input keyword(s).
-1. CulinaryContacts shows all persons with matching names.
+1. User requests to <u>list all persons in the contacts list (UC03)</u> or <u>list all persons in the archived list (UC09)</u>. 
+2. User requests to find all persons in the _displayed person list_ with names matching the input keyword(s). 
+3. CulinaryContacts shows all persons in the _displayed person list_ with matching names.
 
    Use case ends.
 
@@ -416,8 +417,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to find all persons with specific tag(s).
-1. CulinaryContacts shows all persons with a matching tag.
+1. User requests to <u>list all persons in the contacts list (UC03)</u> or <u>list all persons in the archived list (UC09)</u>. 
+2. User requests to find all persons in the _displayed person list_ with specific tag(s). 
+3. CulinaryContacts shows all persons in the _displayed person list_ matching all tags entered.
 
    Use case ends.
 
@@ -433,15 +435,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to <u>list all persons (UC03)</u>.
-1. User requests to delete a specific person in the list.
-1. CulinaryContacts deletes the person.
+1. User requests to <u>list all persons in the contacts list (UC03)</u> or <u>list all persons in the archived list (UC09)</u>.
+2. User requests to delete a specific person in the _displayed person list_. 
+3. CulinaryContacts deletes the person.
 
    Use case ends.
 
 **Extensions**
 
-* 1a. The list is empty.
+* 1a. The _displayed person list_ is empty.
 
   Use case ends.
 
@@ -470,17 +472,134 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case UC09: Exit program**
+**Use case UC09: List all persons in archived list**
+
+**MSS**
+
+1. User requests to show all contacts in the archived list.
+1. CulinaryContacts shows all persons in the archived list.
+
+   Use case ends.
+
+**Use case UC10: Archive a person**
+
+**MSS**
+
+1. User requests to <u>list all persons in the contacts list (UC03)</u>. 
+
+2. User requests to archive a specific person in the contacts list. 
+
+3. CulinaryContacts archives the person.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+   Use case ends.
+
+* 2a. The given index is invalid.
+
+  * 2a1. CulinaryContacts shows an error message.
+  
+    Use case resumes at step 2.
+
+**Use case: UC11 - Unarchive a person**
+
+**MSS**
+
+1. User requests to <u>list all persons in archived list (UC09)</u>.
+
+2. User requests to unarchive a specific person in the archived list.
+
+3. CulinaryContacts unarchives the person.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+  * 2a1. CulinaryContacts shows an error message.
+  
+    Use case resumes at step 2.
+
+**Use case UC12: Add a reservation**
+
+**MSS**
+
+1. User requests to add a new reservation for a person.
+
+2. CulinaryContacts adds the new reservation to the reservations list.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The provided field(s) is/are invalid.
+
+  * 1a1. CulinaryContacts shows an error message.
+  
+    Use case resumes from step 1.
+  
+* 1b. Compulsory field(s) is/are missing.
+
+  * 1b1. CulinaryContacts shows an error message.
+
+    Use case resumes from step 1. 
+  
+* 1c. Another reservation made by the same person, on the same date, and at the same time already exists in the reservations list.
+  
+  * 1c1. CulinaryContacts shows an error message.
+  
+    Use case resumes from step 1.
+
+**Use case UC13: Delete a reservation**
+
+**MSS**
+
+1. User requests to delete a specific reservation in the reservations list.
+
+2. CulinaryContacts deletes the reservation.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The reservations list is empty.
+
+  Use case ends.
+
+* 2a. The given index is invalid.
+
+  * 2a1. CulinaryContacts shows an error message.
+  
+    Use case resumes from step 2.
+
+**Use case UC14: Sort reservations**
+
+**MSS**
+
+1. User requests to sort all reservations.
+
+2. CulinaryContacts shows a sorted list of all reservations.
+
+   Use case ends.
+
+**Use case UC15: Exit program**
 
 **MSS**
 
 1. User requests to exit the program.
-1. CulinaryContacts exits.
 
-   Use case ends.
+2. CulinaryContacts exits.
 
-
-
+   Use case ends
 
 ### Non-Functional Requirements
 
@@ -627,16 +746,16 @@ testers are expected to do more *exploratory* testing.
    Expected: Result display shows error message: `This command can only be used while viewing the archived list`. No person is unarchived.
 
 ### Adding a new reservation
-1. Adding a new reservation for the first person in the displayed person list
+1. Adding a new reservation for the first person in the _displayed person list_.
    
-   a. Prerequisites: There is at least 1 person in the displayed person list. There are no existing reservations made by the first person on 17/04/2024 at 6.00pm.
+   a. Prerequisites: There is at least 1 person in the _displayed person list_. There are no existing reservations made by the first person on 17/04/2024 at 6.00pm.
    
    b. Test case: `rsv 1 d/2024-04-17 t/1800 p/8`<br>
    Expected: A new reservation is added to the reservation list. Name and phone number of the person, as well as date, time and number of people will be displayed in the reservation card.
 
 2. Adding a duplicate reservation with the same date and time
 
-   a. Prerequisites: There is at least 1 person in the displayed person list. There is an existing reservation made by the first person on 17/04/2024 at 6.00pm.
+   a. Prerequisites: There is at least 1 person in the _displayed person list_. There is an existing reservation made by the first person on 17/04/2024 at 6.00pm.
    
    b. Test case: `rsv 1 d/2024-04-17 t/1800` p/5<br>
    Expected: Result display shows error message: `This person has already made a reservation at this date and timing in the address book`. No new reservation is added to the reservation list.
@@ -655,7 +774,7 @@ testers are expected to do more *exploratory* testing.
 ### Sorting reservations
 1. Sorting all reservations
 
-   a. Prerequisites: Multiple reservations in the reservation list. There is at least 1 non-expired reservation and 1 expired reservation in the reservation list. There is at least 1 person in the displayed person list.
+   a. Prerequisites: Multiple reservations in the reservation list. There is at least 1 non-expired reservation and 1 expired reservation in the reservation list. There is at least 1 person in the _displayed person list_.
    
    b. Test case: `rsv 1 d/2024-09-25 t/1800 p/4`, followed by `rsvsort`<br>
    Expected: The new reservation is added to the bottom of the reservation list. After the `rsvsort` command is called, the reservation list is now sorted in the [correct order](UserGuide.html#sorting-reservations-rsvsort).
