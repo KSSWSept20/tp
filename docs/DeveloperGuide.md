@@ -236,7 +236,7 @@ The `archive` command essentially removes the person from the `UniquePersonList 
 
 <puml src="diagrams/ArchiveCommandObjectDiagram0.puml" alt="ArchiveCommandObjectDiagram0" />
 
-In this example, Irfan Ibrahim was initially in the `persons` list, at `INDEX` 1.
+In this example, Irfan was initially in the `persons` list, at `INDEX` 1.
 
 <puml src="diagrams/ArchiveCommandObjectDiagram1.puml" alt="ArchiveCommandObjectDiagram1" />
 
