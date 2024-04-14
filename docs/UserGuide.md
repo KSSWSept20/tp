@@ -80,7 +80,7 @@ CulinaryContacts is a **desktop app for managing contacts and reservations in yo
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Command Box**       | Here is where you enter commands to perform actions within the app.                                                                                                                                                                                                                                                                                 |
 | **Result Display**    | After executing commands in the Command Box, the Result Display shows the outcomes of your actions. This includes confirmation messages as well as command execution success and failure messages.                                                                                                                                                   |
-| **Active Tab**        | The tab that is underlined is known as the active tab. This indicates whether the contact list or the archived list is displayed in the Contacts Panel.                                                                                                                                                                                            |
+| **Active Tab**        | The tab that is underlined is known as the active tab. This indicates whether the contacts list or the archived list is displayed in the Contacts Panel.                                                                                                                                                                                            |
 | **Contacts Panel**    | This panel contains a list of [Contact Cards](#contact-card).                                                                              |
 | **Reservation Panel** | This panel contains a list of [Reservation Cards](#reservation-card). |
 
@@ -300,7 +300,7 @@ Examples:
 * `list` followed by `archive 1` archives the 1st person in the contacts list of CulinaryContacts.
 
 #### Unarchiving a person: `unarchive`
-Removes the specified person from the archived list and adds the person back into the contact list.
+Removes the specified person from the archived list and adds the person back into the contacts list.
 
 Format: `unarchive INDEX`
 
@@ -354,7 +354,7 @@ Deletes the specified reservation from CulinaryContacts.
 
 Format: `rsvdel INDEX`
 * Deletes the reservation at the specified `INDEX`.
-* The index refers to the index number shown in the reservation list.
+* The index refers to the index number shown in the reservations list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Example:
