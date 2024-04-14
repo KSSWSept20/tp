@@ -23,7 +23,7 @@ CulinaryContacts is a **desktop app for managing contacts and reservations in yo
         * [Exiting the program: `exit`](#exiting-the-program-exit)
     * [Contacts](#contacts)
         * [Adding a person: `add`](#adding-a-person-add)
-        * [Listing all persons: `list`](#listing-all-persons-list)
+        * [Listing all persons in contacts list: `list`](#listing-all-persons-in-contacts-list-list)
         * [Editing a person: `edit`](#editing-a-person-edit)
         * [Finding persons by name: `find`](#finding-persons-by-name-find)
         * [Filtering persons by tag: `filter`](#filtering-persons-by-tag-filter)
@@ -216,7 +216,7 @@ Examples:
 * `add n/Alex Yeoh p/87438807 e/alexyeoh@example.com a/Blk 30 Geylang Street 29, #01-40 t/supplier t/durian`
 * `add n/David Lee p/91031282 e/david@example.com a/Blk 436 Serangoon Gardens Street 26, #02-43 t/customer`
 
-#### Listing all persons: `list`
+#### Listing all persons in contacts list: `list`
 
 Shows a list of all persons in the contacts list of CulinaryContacts.
 
