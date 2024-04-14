@@ -521,7 +521,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Saving window preferences
 
-   a. Resize the window to an optimum size. Move the window to a different location. Close the window.
+   a. Resize the window to an optimal size. Move the window to a different location. Close the window.
 
    b. Re-launch the app by double-clicking the jar file.<br>
    Expected: The most recent window size and location is retained.
