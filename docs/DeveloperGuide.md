@@ -166,7 +166,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Help Command
 
-The implementation of help command is more related to Ui part of the code compared to other commands as it opens another window to show the command summary. It is facilitated by the `handleHelp` method in the `MainWindow` class.
+The implementation of help command is more related to the Ui part of the code compared to other commands as it opens another window to show the command summary. It is facilitated by the `handleHelp` method in the `MainWindow` class.
 
 The following activity diagram shows how a user views the help window with the `help` command.
 
