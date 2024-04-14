@@ -603,7 +603,7 @@ testers are expected to do more *exploratory* testing.
    a. Prerequisites: The user is viewing the archived list. There is at least 1 person in the archived list.
    
    b. Test case: `archive 1`<br>
-   Expected: Result display shows error message: “This command can only be used while viewing the active contacts list.” No person is archived.
+   Expected: Result display shows error message: `This command can only be used while viewing the active contacts list`. No person is archived.
 
 ### Unarchiving a person
 1. Unarchiving a person while viewing the archived list
