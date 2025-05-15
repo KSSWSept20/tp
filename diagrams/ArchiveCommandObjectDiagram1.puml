@@ -1,0 +1,18 @@
+@startuml
+
+title After command "archive 1"
+
+object "<u>:AddressBook</u>" as addressBook
+
+object "<u>persons:UniquePersonList</u>" as personsObj
+
+object "<u>archivedPersons:UniquePersonList</u>" as archivedPersonsObj
+
+object "<u>Irfan:Person</u>" as Irfan
+
+addressBook -down-> personsObj
+addressBook -down-> archivedPersonsObj
+personsObj -[hidden]right-> archivedPersonsObj
+archivedPersonsObj -down-> Irfan
+
+@enduml

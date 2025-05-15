@@ -54,8 +54,6 @@
         "filter-command": "Filter command",
         "clear-command": "Clear command",
         "archive-command": "Archive command",
-        "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
-        "proposed-data-archiving": "[Proposed] Data archiving",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -65,8 +63,16 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
-        "saving-data": "Saving data"
+        "listing-all-persons-in-contacts-list": "Listing all persons in contacts list",
+        "listing-all-persons-in-archived-list": "Listing all persons in archived list",
+        "clearing-all-entries": "Clearing all entries",
+        "viewing-help": "Viewing help",
+        "archiving-a-person": "Archiving a person",
+        "unarchiving-a-person": "Unarchiving a person",
+        "adding-a-new-reservation": "Adding a new reservation",
+        "deleting-a-new-reservation": "Deleting a new reservation",
+        "sorting-reservations": "Sorting reservations",
+        "appendix-planned-enhancements": "Appendix: Planned Enhancements"
       },
       "headingKeywords": {}
     },

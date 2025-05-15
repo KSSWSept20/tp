@@ -2,15 +2,15 @@
 hide circle
 skinparam classAttributeIconSize 0
 
-Class "{abstract}\nCommand" as Command {
-  +execute(Model): CommandResult
+Class "{ abstract }\nCommand" as Command {
+  +execute(Model): CommandResult { abstract }
 }
 Class FilterCommand {
   +COMMAND_WORD: String
   +MESSAGE_USAGE: String
   +execute(Model): CommandResult
 }
-Class hasMatchingTagPredicate {
+Class HasMatchingTagPredicate {
   -filterTags: List<String>
   +test(Person): Boolean
 }
@@ -20,8 +20,8 @@ Class "<<interface>>\nPredicate<Person>" as Predicate {
 Class Model
 
 FilterCommand -up-|> Command
-FilterCommand -> "1" hasMatchingTagPredicate
+FilterCommand -> "1" HasMatchingTagPredicate
 FilterCommand .down.> Model
-hasMatchingTagPredicate .up.|> Predicate
+HasMatchingTagPredicate .up.|> Predicate
 
 @enduml
